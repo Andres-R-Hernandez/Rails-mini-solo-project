@@ -1,0 +1,26 @@
+<h1>Create a Gym Appointment at Globo Gym</h1>
+
+<%= form_for @appointment  do |f| %>
+  <%= f.label :user_name %>
+  <%= f.text_field :user_name, list: "users_autocomplete" %>
+  <datalist id="users_autocomplete">
+    <% User.all.each do |user| %>
+      <option value="<%= user.name %>">
+    <% end %>
+  </datalist>
+  <br />
+  <br />
+  <%= f.label :equipment_to_use %>
+  <%= f.collection_select :equipment_id, Equipment.all, :id, :name %>
+  <br />
+  <br />
+  <%= f.label :date %>
+  <%= f.text_field :date %>
+  <br />
+  <br />
+  <%= f.label :time %>
+  <%= f.text_field :time %>
+  <br />
+  <br />
+  <%= f.submit "Create Appointment"%>
+<% end %>

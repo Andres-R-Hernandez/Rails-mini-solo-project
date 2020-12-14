@@ -1,0 +1,15 @@
+<h1>Appointment Page</h1>
+
+<b>User: </b><%= link_to @appointment.user.name, user_path(@appointment.user) %>
+<br/>
+<br/>
+<b>Day: </b><%= @appointment.date %>
+<br/>
+<br/>
+<b>Time: </b><%= @appointment.time %>
+<br/>
+<br/>
+<b>Equipment: </b><%= @appointment.equipment.name %>
+<br/>
+<br/>
+<b>Equipment Info: </b><%= @appointment.equipment.use %>

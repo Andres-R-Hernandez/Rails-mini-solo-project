@@ -1,0 +1,26 @@
+<h1><%= @user.name.split[0] %>'s User Page</h1>
+
+<b>User Name: </b><%= @user.name %>
+<br/>
+<br/>
+<b>Bio: </b><%= @user.bio %>
+<br/>
+<br/>
+<b>Current Appointments:</b>
+<br/>
+<% count = 1 %>
+<% @user.appointments.each do |appointment| %>
+  <%= link_to "Appointment # #{count}", appointment_path(appointment) %><br/>
+  Date: <%= appointment.date %><br/>
+  Time: <%= appointment.time %><br/>
+  Equipment: <%= appointment.equipment.name %><br/>
+  <%= form_for appointment, url: edit_appointment_path(appointment), method: :get do |f| %>
+    <%= f.submit "Edit" %>
+  <% end %>
+  <%= form_for appointment, method: :delete do |f| %>
+    <%= f.submit "Delete" %>
+  <% end %>
+  <br/>
+  <% count += 1 %>
+<% end %>
+<%= button_to "New Appointment", new_appointment_path, method: :get %>
